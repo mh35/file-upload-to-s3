@@ -15,3 +15,7 @@
  * @author MH35
  * @license GPL-2.0+
  */
+
+if (!class_exists('Aws\S3\S3Client', true)) {
+    require_once(dirname(__FILE__) . '/vendor/autoload.php');
+}
