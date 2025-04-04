@@ -7,6 +7,9 @@
  */
 
 if (!class_exists('FileUploadToS3PluginConfig')) {
+    /**
+     * Plugin configs
+     */
     class FileUploadToS3PluginConfig {
         /**
          * @var string Credentials source
