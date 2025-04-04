@@ -20,12 +20,18 @@ if (!class_exists('Aws\S3\S3Client', true)) {
     require_once(dirname(__FILE__) . '/vendor/autoload.php');
 }
 
+require_once(dirname(__FILE__) . '/inc/config.php');
+
 if (!class_exists('FileUploadToS3Plugin')) {
     class FileUploadToS3Plugin {
         /**
          * @var FileUploadToS3Plugin Plugin instance
          */
         public static $instance;
+        /**
+         * @var FileUploadToS3PluginConfig Plugin configs
+         */
+        private $config;
         /**
          * Initialize plugin.
          */
@@ -40,12 +46,16 @@ if (!class_exists('FileUploadToS3Plugin')) {
                 'plugins_loaded',
                 array( $this, 'load_textdomain' )
             );
+            $this->config = new FileUploadToS3PluginConfig();
         }
         /**
          * Load textdomain
          */
         public function load_textdomain() {
             load_plugin_textdomain( 'file-upload-to-s3' );
+        }
+        public function get_config() {
+            return $this->config;
         }
     }
 }
